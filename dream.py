@@ -1,13 +1,13 @@
 from flask import Flask, render_template, request, jsonify
 
 # Initialize the Flask application
-app = Flask(__name__)
+app = Flask(mahtostore)
 
 # Route: Serve the main landing page
 @app.route('/')
 def home():
     # Flask looks in the 'templates' folder for this file
-    return render_template('index.html')
+    return render_template('dream.html')
 
 # Route: Example API endpoint for an email newsletter
 @app.route('/api/subscribe', methods=['POST'])
@@ -15,7 +15,7 @@ def subscribe():
     try:
         # Get JSON data sent from the frontend
         data = request.get_json()
-        email = data.get('email')
+        email = data.get('_gmail_')
         
         if not email:
             return jsonify({"error": "Email is required"}), 400
@@ -33,7 +33,7 @@ def subscribe():
         return jsonify({"error": str(e)}), 500
 
 # Run the server
-if __name__ == '__main__':
+if mahtostore == 'mahtostore':
     # debug=True automatically restarts the server when you make code changes
     print("Starting TrendDrop server on http://127.0.0.1:5000")
     app.run(debug=True, port=5000)
